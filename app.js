@@ -74,7 +74,7 @@ const FORMATS = {
     formula: ['心情', '的', '颜色', '物品', '5~6 位数字'],
     parts: [
       { label: '心情', key: 'moods', accent: 1 },
-      { lit: '的' },
+      { lit: '的', p: 0.6 },
       { label: '颜色', key: 'colors', suffix: '色', accent: 2 },
       { label: '物品', key: 'items', accent: 3 },
       { label: '数字', num: true, accent: 4 },
@@ -84,7 +84,7 @@ const FORMATS = {
     formula: ['不及物动作', '的', '名词', '及物动词', '名词'],
     parts: [
       { label: '不及物动作', key: 'actions', accent: 2 },
-      { lit: '的' },
+      { lit: '的', p: 0.6 },
       { label: '名词', key: 'nouns', accent: 1 },
       { label: '及物动词', key: 'verbs', accent: 3 },
       { label: '名词', key: 'objects', accent: 4 },
@@ -110,13 +110,18 @@ function randomNumber() {
 
 function build(key) {
   const format = FORMATS[key];
-  const segs = format.parts.map((part) => {
-    if (part.lit) return { kind: 'lit', value: part.lit };
-    if (part.num) return { kind: 'word', label: part.label, value: randomNumber(), accent: part.accent };
-    const base = pick(WORDS[part.key]);
-    const value = part.suffix && Math.random() < 0.5 ? base + part.suffix : base;
-    return { kind: 'word', label: part.label, value, accent: part.accent };
-  });
+  const segs = format.parts
+    .map((part) => {
+      if (part.lit) {
+        if (part.p !== undefined && Math.random() >= part.p) return null;
+        return { kind: 'lit', value: part.lit };
+      }
+      if (part.num) return { kind: 'word', label: part.label, value: randomNumber(), accent: part.accent };
+      const base = pick(WORDS[part.key]);
+      const value = part.suffix && Math.random() < 0.5 ? base + part.suffix : base;
+      return { kind: 'word', label: part.label, value, accent: part.accent };
+    })
+    .filter(Boolean);
   return { key, id: segs.map((s) => s.value).join(''), segs };
 }
 
