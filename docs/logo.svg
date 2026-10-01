@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="傻吊 ID 生成器">
+  <title>傻吊 ID 生成器</title>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b95f8"/>
+      <stop offset="0.55" stop-color="#0b57d0"/>
+      <stop offset="1" stop-color="#0842a0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="19" fill="url(#tile)"/>
+  <g fill="#eef4ff">
+    <circle cx="23.2" cy="25.1" r="4.4"/>
+    <circle cx="40.8" cy="25.1" r="4.4"/>
+    <path d="M49.6 7.5l1.6 4 4 1.6-4 1.6-1.6 4-1.6-4-4-1.6 4-1.6z"/>
+  </g>
+  <path d="M20.3 35.5q11.7 13.3 23.4 0" fill="none" stroke="#eef4ff" stroke-width="5.3" stroke-linecap="round"/>
+</svg>
