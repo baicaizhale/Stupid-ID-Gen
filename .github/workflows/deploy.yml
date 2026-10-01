@@ -27,10 +27,13 @@ jobs:
             echo "::notice title=跳过部署::未配置 CLOUDFLARE_API_TOKEN，见 README 的部署章节"
           fi
 
+      - name: 构建静态资源
+        run: node scripts/build.mjs
+
       - name: 发布到 Cloudflare Pages
         if: steps.cf.outputs.ready == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=stupid-id-gen --branch=main
+          command: pages deploy dist --project-name=stupid-id-gen --branch=main

@@ -39,10 +39,10 @@ npx serve .          # 或者 python -m http.server 5173
 
 项目：`stupid-id-gen`，自定义域名 `ohmyid.baicaizhale.top`。
 
-手动发布：
+手动发布（`npm run build` 把静态资源拷到 `dist/`，只发布这三个文件）：
 
 ```bash
-npx wrangler pages deploy . --project-name=stupid-id-gen --branch=main
+npm run deploy        # 等价于 node scripts/build.mjs && wrangler pages deploy dist --project-name=stupid-id-gen --branch=main
 ```
 
 自动发布（push 到 `main` 就上线）：
