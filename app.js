@@ -404,17 +404,18 @@ $('btnRoll').addEventListener('click', () => roll());
 $('btnResult').addEventListener('click', () => roll());
 $('btnCopy').addEventListener('click', () => copyCurrent());
 
-/* 点 logo：小丑伸手捏自己的鼻子 */
-const clown = $('clownLogo');
+/* 点 logo：小丑伸手捏自己的鼻子（动画类挂在 svg 上，CSS 选择器是 .clown.is-pinching） */
+const clownBtn = $('clownLogo');
+const clownSvg = clownBtn.querySelector('.clown');
 let pinching = false;
-clown.addEventListener('click', () => {
+clownBtn.addEventListener('click', () => {
   if (pinching) return;
   pinching = true;
-  clown.classList.add('is-pinching');
-  window.setTimeout(() => clown.classList.add('is-squeezing'), 340);
-  window.setTimeout(() => clown.classList.remove('is-squeezing'), 980);
+  clownSvg.classList.add('is-pinching');
+  window.setTimeout(() => clownSvg.classList.add('is-squeezing'), 340);
+  window.setTimeout(() => clownSvg.classList.remove('is-squeezing'), 980);
   window.setTimeout(() => {
-    clown.classList.remove('is-pinching');
+    clownSvg.classList.remove('is-pinching');
     pinching = false;
   }, 1250);
 });
