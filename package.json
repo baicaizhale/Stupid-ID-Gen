@@ -1,0 +1,19 @@
+{
+  "name": "stupid-id-gen",
+  "version": "1.0.0",
+  "private": true,
+  "description": "傻吊 ID 生成器：硬编码词库 + 纯随机抽取",
+  "homepage": "https://ohmyid.baicaizhale.top",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baicaizhale/Stupid-ID-Gen.git"
+  },
+  "scripts": {
+    "dev": "npx --yes serve . -l 5173",
+    "deploy": "wrangler pages deploy . --project-name=stupid-id-gen --branch=main"
+  },
+  "devDependencies": {
+    "wrangler": "^4.105.0"
+  },
+  "license": "MIT"
+}
