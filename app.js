@@ -152,7 +152,6 @@ const els = {
   resultText: $('resultText'),
   parts: $('parts'),
   charCount: $('charCount'),
-  partCount: $('partCount'),
   formula: $('formula'),
   history: $('history'),
   historyList: $('historyList'),
@@ -201,7 +200,6 @@ function renderParts(result) {
     box.append(label, value);
     els.parts.append(box);
   });
-  els.partCount.textContent = `(${result.segs.filter((s) => s.kind === 'word').length})`;
 }
 
 function renderResult(result, { settle = true } = {}) {
@@ -286,12 +284,12 @@ function roll({ animate = true } = {}) {
 
   state.rolling = true;
   els.resultText.classList.add('is-rolling');
-  const frames = 8;
+  // 老虎机式收尾：间隔逐渐拉长，停在最终结果上
+  const delays = [45, 45, 48, 56, 70, 92, 122, 160];
   let i = 0;
-  const timer = window.setInterval(() => {
+  const tick = () => {
     i += 1;
-    if (i >= frames) {
-      window.clearInterval(timer);
+    if (i >= delays.length) {
       state.rolling = false;
       els.resultText.classList.remove('is-rolling');
       commit(result);
@@ -299,7 +297,9 @@ function roll({ animate = true } = {}) {
     }
     els.resultText.textContent = build(key).id;
     els.resultText.classList.remove('is-idle');
-  }, 46);
+    window.setTimeout(tick, delays[i]);
+  };
+  window.setTimeout(tick, delays[0]);
 }
 
 /* ---------------- 复制 / 提示 ---------------- */
