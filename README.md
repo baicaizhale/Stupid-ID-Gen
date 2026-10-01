@@ -12,7 +12,7 @@
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fohmyid.baicaizhale.top&style=flat-square&label=ohmyid.baicaizhale.top)](https://ohmyid.baicaizhale.top)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?style=flat-square&logo=cloudflare&logoColor=ffffff)](https://workers.cloudflare.com/)
 
-[在线体验](https://ohmyid.baicaizhale.top) ｜ [两种格式](#两种格式) ｜ [本地运行](#本地运行) ｜ [部署](#部署) ｜ [加词](CONTRIBUTING.md)
+[在线体验](https://ohmyid.baicaizhale.top) ｜ [两种格式](#两种格式) ｜ [本地运行](#本地运行) ｜ [加词](CONTRIBUTING.md)
 
 <img src="docs/preview-dark.png" width="760" alt="深色模式（默认）">
 <br>
@@ -55,7 +55,7 @@
 > 静坐的水母炖泡面
 > 摸鱼的卡皮巴拉点评红头文件
 
-50 个动作、48 个名词、42 个动词、47 个宾语，大约 474 万种组合。「蛇将」本身是个名词，这一档没有连接词。
+50 个动作、48 个名词、42 个动词、47 个宾语，大约 474 万种组合。
 
 ## 特性
 
@@ -73,40 +73,6 @@ npx serve .
 ```
 
 或者 `python -m http.server 5173`，或者直接双击 `index.html`。想改词就改 `app.js` 里的 `WORDS`，刷新生效。
-
-## 项目结构
-
-```
-Stupid-ID-Gen/
-├── index.html                  # 页面结构 + 内联 SVG 图标
-├── style.css                   # 深浅两套主题变量 + 布局
-├── app.js                      # 词库 WORDS、格式 FORMATS、生成逻辑
-├── scripts/
-│   └── build.mjs               # 把三个静态文件拷进 dist/
-├── docs/                       # logo 与预览图
-├── wrangler.toml               # Workers 配置：静态资源 + 自定义域名
-├── .github/workflows/deploy.yml# push 到 main 自动部署
-├── CONTRIBUTING.md             # 加词指南
-└── LICENSE
-```
-
-## 部署
-
-线上跑在 Cloudflare Workers 上，配置都在 `wrangler.toml`：`dist/` 是静态资源目录，`ohmyid.baicaizhale.top` 是自定义域名。wrangler 部署时会自动建 DNS 记录、签证书。
-
-```bash
-npm run deploy
-```
-
-首次部署需要先 `npx wrangler login`，或者在环境变量里配好 `CLOUDFLARE_API_TOKEN` 和 `CLOUDFLARE_ACCOUNT_ID`。
-
-push 到 `main` 也会自动发布，走的是 `deploy.yml`：
-
-1. 在 Cloudflare 后台用 Edit Cloudflare Workers 模板建一个 API Token；
-2. `gh secret set CLOUDFLARE_API_TOKEN`（账号 ID 已经配好）；
-3. 之后每次 push 自动上线。
-
-没配 Token 时工作流会跳过部署，不会报错。
 
 ## 加词
 
