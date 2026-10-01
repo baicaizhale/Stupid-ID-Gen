@@ -129,41 +129,14 @@ npm run deploy                # = node scripts/build.mjs && wrangler deploy
 
 ## 词库与贡献
 
-想把谁的 ID 写进词库？欢迎开 [issue](https://github.com/baicaizhale/Stupid-ID-Gen/issues/new) 或者直接提 PR。
-
-加词的规矩只有两条：
-
-1. **必须是纯中文词条**——`BUG`、`PPT`、`U盘` 这类夹字母的词条很突兀（已换成 `八阿哥`、`幻灯片`、`优盘`）；
-2. **词性要对上**：`actions` 放不及物动作，`nouns` 放名词（「蛇将」这种算名词），`verbs` 放能带宾语的及物动词。
-
-改完可以用下面这段脚本自检一遍：
-
-```bash
-node -e "
-const src = require('fs').readFileSync('app.js','utf8');
-const block = src.slice(src.indexOf('const WORDS'), src.indexOf('const FORMATS'));
-const bad = [...block.matchAll(/'([^']*)'/g)].map(m => m[1]).filter(w => /[A-Za-z0-9]/.test(w));
-console.log(bad.length ? '混进了非中文词条：' + bad.join('、') : '词库干净，全是中文');
-"
-```
+最欢迎的贡献就是**加词**——词库越大，摇出来的越好笑。怎么加、有什么规矩，看 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 设计说明
 
 - 配色直接取自 Google 翻译深色模式的截图取样：背景 `#131314`、描边 `#444746`、选中胶囊 `#0842a0` / `#d3e3fd`、填充卡片 `#1e1f20`、浅蓝强调 `#a8c7fa`；
 - 字体 [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) + Noto Sans SC，来自 Google Fonts，系统字体兜底；
-- 左上角是手写的 SVG 笑脸方块（[`docs/logo.svg`](docs/logo.svg)），图标的描边风格统一为 1.7px 圆头；
+- 左上角是手写的 SVG 笑脸方块（[`docs/logo.svg`](docs/logo.svg)），图标的描边风格统一为 2px 圆头；
 - 拆解里的每个片段有自己的颜色，心情是蓝、颜色是橙、物品是绿、数字是紫。
-
-## FAQ
-
-**为什么不让我自定义词库？**
-设计目标就是「硬编码 + 随机」，没有自定义入口是特性不是缺陷。想改就直接改 `app.js` 再部署，或者提 PR 把词贡献给所有人。
-
-**数字为什么是 5~6 位？**
-最初的需求就是这么定的：`冷静的白(色)键盘39023`。
-
-**会收集数据吗？**
-不会。历史记录只存在你自己的浏览器 `localStorage` 里，清空按钮一按就没了。
 
 ## License
 
