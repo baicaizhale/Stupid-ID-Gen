@@ -131,33 +131,14 @@ a { color: inherit; }
   place-items: center;
   width: 32px;
   height: 32px;
-  border-radius: 9px;
-  background: var(--chip-active-bg);
-  color: var(--chip-active-fg);
+  border-radius: 10px;
+  background: linear-gradient(140deg, #5b95f8 0%, #0b57d0 55%, #0842a0 100%);
+  color: #eef4ff;
 }
 
-.brand__logo .icon { width: 20px; height: 20px; }
+.logo-mark { width: 21px; height: 21px; }
 
 .brand__name { font-size: 21px; font-weight: 400; letter-spacing: .01em; }
-
-.avatar {
-  width: 32px;
-  height: 32px;
-  margin-left: 8px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-  background: conic-gradient(from 200deg, #4285f4, #34a853, #fbbc05, #ea4335, #4285f4);
-  cursor: pointer;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-
-.avatar:hover { transform: scale(1.06); box-shadow: 0 0 0 4px var(--hover); }
-.avatar:active { transform: scale(.94); }
 
 /* ---------- 页面 ---------- */
 

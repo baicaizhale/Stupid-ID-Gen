@@ -221,7 +221,7 @@ function pushHistory(result) {
   state.history.unshift({ id: result.id, fmt: result.key, ts: Date.now() });
   state.history = state.history.slice(0, 30);
   saveJSON(HISTORY_KEY, state.history);
-  if (!els.history.hidden) renderHistory();
+  renderHistory();
 }
 
 function timeLabel(ts) {
@@ -240,7 +240,7 @@ function renderHistory() {
   if (!state.history.length) {
     const li = document.createElement('li');
     li.className = 'history__empty';
-    li.textContent = '还什么都没摇过。';
+    li.textContent = '还没有记录，摇一个试试。';
     els.historyList.append(li);
     return;
   }
@@ -403,16 +403,7 @@ $('btnSwap').addEventListener('click', () => {
 $('btnRoll').addEventListener('click', () => roll());
 $('btnDice').addEventListener('click', () => roll());
 $('btnResult').addEventListener('click', () => roll());
-$('btnAvatar').addEventListener('click', () => roll());
 $('btnCopy').addEventListener('click', () => copyCurrent());
-
-$('btnHistory').addEventListener('click', () => {
-  const willOpen = els.history.hidden;
-  if (willOpen) renderHistory();
-  els.history.hidden = !willOpen;
-  $('btnHistory').setAttribute('aria-expanded', String(willOpen));
-  if (willOpen) els.history.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
-});
 
 $('btnClearHistory').addEventListener('click', () => {
   state.history = [];
@@ -446,4 +437,5 @@ document.addEventListener('keydown', (event) => {
 state.history = loadJSON(HISTORY_KEY, []);
 applyTheme(loadJSON(THEME_KEY, 'dark') === 'light' ? 'light' : 'dark');
 setFormat('fury', { reroll: false });
+renderHistory();
 roll({ animate: false });

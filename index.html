@@ -9,7 +9,7 @@
 <meta property="og:title" content="傻吊 ID 生成器">
 <meta property="og:description" content="硬编码词库 + 纯随机抽取，给你一个不正经的 ID。">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230842a0'/%3E%3Ccircle cx='11' cy='11' r='2.6' fill='%23d3e3fd'/%3E%3Ccircle cx='21' cy='16' r='2.6' fill='%23d3e3fd'/%3E%3Ccircle cx='13' cy='21' r='2.6' fill='%23d3e3fd'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230842a0'/%3E%3Ccircle cx='11.6' cy='12.5' r='2.2' fill='%23eaf1ff'/%3E%3Ccircle cx='20.4' cy='12.5' r='2.2' fill='%23eaf1ff'/%3E%3Cpath d='M10.2 17.7q5.8 6.6 11.6 0' fill='none' stroke='%23eaf1ff' stroke-width='2.7' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
@@ -18,6 +18,7 @@
 <body>
 
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-logo" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><circle cx="8.7" cy="9.4" r="1.65"/><circle cx="15.3" cy="9.4" r="1.65"/><path d="M18.6 2.8l.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6z"/></g><path d="M7.6 13.3q4.4 5 8.8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.4v2M12 19.6v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.4 12h2M19.6 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.6 14.3A8.6 8.6 0 0 1 9.7 3.4a8.6 8.6 0 1 0 10.9 10.9z"/></symbol>
@@ -44,7 +45,7 @@
       <svg class="icon"><use href="#i-menu"/></svg>
     </button>
     <a class="brand" href="./">
-      <span class="brand__logo" aria-hidden="true"><svg class="icon icon--fill"><use href="#i-dice"/></svg></span>
+      <span class="brand__logo" aria-hidden="true"><svg class="logo-mark"><use href="#i-logo"/></svg></span>
       <span class="brand__name">傻吊 ID 生成器</span>
     </a>
   </div>
@@ -52,7 +53,6 @@
     <button class="icon-btn" id="btnTheme" type="button" aria-label="切换明暗主题"><svg class="icon"><use href="#i-moon"/></svg></button>
     <a class="icon-btn" href="https://github.com/baicaizhale/Stupid-ID-Gen" target="_blank" rel="noopener" aria-label="GitHub 仓库"><svg class="icon icon--fill"><use href="#i-github"/></svg></a>
     <button class="icon-btn" id="btnApps" type="button" aria-label="应用"><svg class="icon icon--fill"><use href="#i-apps"/></svg></button>
-    <button class="avatar" id="btnAvatar" type="button" aria-label="再摇一个">傻</button>
   </div>
 </header>
 
@@ -115,13 +115,9 @@
       <span class="round__circle"><svg class="icon"><use href="#i-copy"/></svg></span>
       <span class="round__label">复制</span>
     </button>
-    <button class="round" id="btnHistory" type="button" aria-expanded="false">
-      <span class="round__circle"><svg class="icon"><use href="#i-clock"/></svg></span>
-      <span class="round__label">历史记录</span>
-    </button>
   </div>
 
-  <section class="history" id="history" hidden>
+  <section class="history" id="history">
     <div class="history__head">
       <h2 class="history__title">最近摇出来的</h2>
       <button class="text-btn" id="btnClearHistory" type="button"><svg class="icon"><use href="#i-trash"/></svg>清空</button>
@@ -130,7 +126,7 @@
   </section>
 
   <footer class="foot">
-    <span>纯前端 · 无后端 · 无登录 · 词库全硬编码</span>
+    <span>© 2026 <a href="https://github.com/baicaizhale" target="_blank" rel="noopener">baicaizhale</a> · MIT License</span>
     <span class="foot__sep">·</span>
     <a href="https://github.com/baicaizhale/Stupid-ID-Gen" target="_blank" rel="noopener">GitHub</a>
   </footer>
