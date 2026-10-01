@@ -1,0 +1,14 @@
+name = "stupid-id-gen"
+compatibility_date = "2026-10-01"
+
+# 只发布 dist/ 里的静态资源（npm run build 生成）
+[assets]
+directory = "./dist"
+
+# 自定义域名：wrangler 会自动建 DNS 记录并签发证书
+[[routes]]
+pattern = "ohmyid.baicaizhale.top"
+custom_domain = true
+
+[observability]
+enabled = true
