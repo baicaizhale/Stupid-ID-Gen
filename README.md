@@ -35,20 +35,24 @@ npx serve .          # 或者 python -m http.server 5173
 
 直接双击 `index.html` 也能跑。
 
-## 部署（Cloudflare Pages）
+## 部署（Cloudflare Workers）
 
-项目：`stupid-id-gen`，自定义域名 `ohmyid.baicaizhale.top`。
+线上地址 <https://ohmyid.baicaizhale.top>：一个纯静态的 Workers 站点，配置都在 [`wrangler.toml`](wrangler.toml) 里——
+`dist/`（`npm run build` 生成，只含三个静态文件）作为静态资源目录，`ohmyid.baicaizhale.top` 作为自定义域名，
+wrangler 会自动建好 DNS 记录并签发证书。
 
-手动发布（`npm run build` 把静态资源拷到 `dist/`，只发布这三个文件）：
+手动发布：
 
 ```bash
-npm run deploy        # 等价于 node scripts/build.mjs && wrangler pages deploy dist --project-name=stupid-id-gen --branch=main
+npm run deploy        # 等价于 node scripts/build.mjs && wrangler deploy
 ```
+
+首次在本机部署需要 `npx wrangler login`，或者在环境变量里配好 `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`。
 
 自动发布（push 到 `main` 就上线）：
 
 1. 到 <https://dash.cloudflare.com/profile/api-tokens> 用 “Edit Cloudflare Workers” 模板建一个 API Token；
-2. `gh secret set CLOUDFLARE_API_TOKEN`，`gh secret set CLOUDFLARE_ACCOUNT_ID`；
+2. `gh secret set CLOUDFLARE_API_TOKEN`（`CLOUDFLARE_ACCOUNT_ID` 已经配好了）；
 3. 之后每次 push 由 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) 自动部署。
 
 没配 Token 时工作流会跳过部署而不是报错。
