@@ -245,8 +245,6 @@ a { color: inherit; }
 .struct__swap:hover { background: var(--hover); color: var(--primary); }
 .struct__swap:active { transform: rotate(180deg); }
 
-.struct__hint { color: var(--text-muted); font-size: 13px; white-space: nowrap; }
-
 /* ---------- 双卡片 ---------- */
 
 .panels {
@@ -275,25 +273,7 @@ a { color: inherit; }
   color: var(--text-muted);
 }
 
-.panel__corner--left { left: 16px; }
 .panel__corner--right { right: 20px; }
-
-.mini-btn {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: background-color .16s ease, color .16s ease;
-}
-
-.mini-btn:hover { background: var(--hover); color: var(--primary); }
-.mini-btn .icon { width: 21px; height: 21px; }
 
 .count { font-size: 13px; font-variant-numeric: tabular-nums; }
 
@@ -633,8 +613,6 @@ a { color: inherit; }
 }
 
 @media (max-width: 520px) {
-  #btnApps { display: none; }
-  .struct__hint { display: none; }
   .round__circle { width: 52px; height: 52px; }
 }
 

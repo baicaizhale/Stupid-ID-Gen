@@ -219,7 +219,7 @@ function renderResult(result, { settle = true } = {}) {
 function pushHistory(result) {
   if (state.history[0] && state.history[0].id === result.id) return;
   state.history.unshift({ id: result.id, fmt: result.key, ts: Date.now() });
-  state.history = state.history.slice(0, 30);
+  state.history = state.history.slice(0, 15);
   saveJSON(HISTORY_KEY, state.history);
   renderHistory();
 }
@@ -401,7 +401,6 @@ $('btnSwap').addEventListener('click', () => {
 });
 
 $('btnRoll').addEventListener('click', () => roll());
-$('btnDice').addEventListener('click', () => roll());
 $('btnResult').addEventListener('click', () => roll());
 $('btnCopy').addEventListener('click', () => copyCurrent());
 
@@ -418,7 +417,6 @@ $('btnTheme').addEventListener('click', () => {
 
 $('btnMenu').addEventListener('click', openDrawer);
 $('btnDrawerClose').addEventListener('click', closeDrawer);
-$('btnApps').addEventListener('click', openDrawer);
 els.scrim.addEventListener('click', closeDrawer);
 
 document.addEventListener('keydown', (event) => {
