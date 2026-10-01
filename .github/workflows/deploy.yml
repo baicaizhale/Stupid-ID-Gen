@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -30,10 +30,10 @@ jobs:
       - name: 构建静态资源
         run: node scripts/build.mjs
 
-      - name: 发布到 Cloudflare Pages
+      - name: 发布到 Cloudflare Workers
         if: steps.cf.outputs.ready == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=stupid-id-gen --branch=main
+          command: deploy
