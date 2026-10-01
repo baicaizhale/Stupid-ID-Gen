@@ -9,7 +9,7 @@
 <meta property="og:title" content="傻吊 ID 生成器">
 <meta property="og:description" content="硬编码词库 + 纯随机抽取，给你一个不正经的 ID。">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230842a0'/%3E%3Ccircle cx='11.6' cy='12.5' r='2.2' fill='%23eaf1ff'/%3E%3Ccircle cx='20.4' cy='12.5' r='2.2' fill='%23eaf1ff'/%3E%3Cpath d='M10.2 17.7q5.8 6.6 11.6 0' fill='none' stroke='%23eaf1ff' stroke-width='2.7' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230842a0'/%3E%3Cg fill='none' stroke='%23eef4ff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='13.5' cy='27' r='6.5'/%3E%3Ccircle cx='16.5' cy='19.5' r='5'/%3E%3Ccircle cx='50.5' cy='27' r='6.5'/%3E%3Ccircle cx='47.5' cy='19.5' r='5'/%3E%3Cellipse cx='32' cy='34.5' rx='16' ry='15.5'/%3E%3Cpath d='M26.5 19.5 32 6.5l5.5 13'/%3E%3Ccircle cx='32' cy='37.5' r='5'/%3E%3Cpath d='M25.5 44.5Q32 49.5 38.5 44.5'/%3E%3C/g%3E%3Cg fill='%23eef4ff'%3E%3Ccircle cx='26.2' cy='30.5' r='1.7'/%3E%3Ccircle cx='37.8' cy='30.5' r='1.7'/%3E%3Ccircle cx='32' cy='5.2' r='2.5'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
@@ -18,7 +18,6 @@
 <body>
 
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="i-logo" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><circle cx="8.7" cy="9.4" r="1.65"/><circle cx="15.3" cy="9.4" r="1.65"/><path d="M18.6 2.8l.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6z"/></g><path d="M7.6 13.3q4.4 5 8.8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.6"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
@@ -39,10 +38,26 @@
     <button class="icon-btn" id="btnMenu" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="drawer">
       <svg class="icon"><use href="#i-menu"/></svg>
     </button>
-    <a class="brand" href="./">
-      <span class="brand__logo" aria-hidden="true"><svg class="logo-mark"><use href="#i-logo"/></svg></span>
+    <button class="brand" id="clownLogo" type="button" aria-label="捏捏小丑的鼻子">
+      <svg class="clown" viewBox="0 0 64 64" aria-hidden="true">
+        <g class="clown-hair">
+          <circle cx="13.5" cy="27" r="6.5"/><circle cx="16.5" cy="19.5" r="5"/>
+          <circle cx="50.5" cy="27" r="6.5"/><circle cx="47.5" cy="19.5" r="5"/>
+        </g>
+        <ellipse class="clown-head" cx="32" cy="34.5" rx="16" ry="15.5"/>
+        <path class="clown-hat" d="M26.5 19.5 32 6.5l5.5 13"/>
+        <circle class="clown-pompom" cx="32" cy="5.2" r="2.5"/>
+        <g class="clown-eyes"><circle cx="26.2" cy="30.5" r="1.7"/><circle cx="37.8" cy="30.5" r="1.7"/></g>
+        <circle class="clown-nose" cx="32" cy="37.5" r="5"/>
+        <path class="clown-mouth" d="M25.5 44.5Q32 49.5 38.5 44.5"/>
+        <g class="clown-arm">
+          <path d="M12.5 55Q17 47 24.5 40.5"/>
+          <circle cx="32" cy="37.5" r="4.9"/>
+          <path class="clown-fingers" d="M27.6 35.7h8.8M27.6 39.3h8.8"/>
+        </g>
+      </svg>
       <span class="brand__name">傻吊 ID 生成器</span>
-    </a>
+    </button>
   </div>
   <div class="appbar__right">
     <button class="icon-btn" id="btnTheme" type="button" aria-label="切换明暗主题"><svg class="icon"><use href="#i-moon"/></svg></button>
@@ -126,7 +141,23 @@
 
 <aside class="drawer" id="drawer" hidden aria-label="菜单">
   <div class="drawer__head">
-    <span class="brand__logo" aria-hidden="true"><svg class="logo-mark"><use href="#i-logo"/></svg></span>
+    <svg class="clown clown--static" viewBox="0 0 64 64" aria-hidden="true">
+      <g class="clown-hair">
+        <circle cx="13.5" cy="27" r="6.5"/><circle cx="16.5" cy="19.5" r="5"/>
+        <circle cx="50.5" cy="27" r="6.5"/><circle cx="47.5" cy="19.5" r="5"/>
+      </g>
+      <ellipse class="clown-head" cx="32" cy="34.5" rx="16" ry="15.5"/>
+      <path class="clown-hat" d="M26.5 19.5 32 6.5l5.5 13"/>
+      <circle class="clown-pompom" cx="32" cy="5.2" r="2.5"/>
+      <g class="clown-eyes"><circle cx="26.2" cy="30.5" r="1.7"/><circle cx="37.8" cy="30.5" r="1.7"/></g>
+      <circle class="clown-nose" cx="32" cy="37.5" r="5"/>
+      <path class="clown-mouth" d="M25.5 44.5Q32 49.5 38.5 44.5"/>
+      <g class="clown-arm">
+        <path d="M12.5 55Q17 47 24.5 40.5"/>
+        <circle cx="32" cy="37.5" r="4.9"/>
+        <path class="clown-fingers" d="M27.6 35.7h8.8M27.6 39.3h8.8"/>
+      </g>
+    </svg>
     <span class="drawer__title">傻吊 ID 生成器</span>
     <button class="icon-btn" id="btnDrawerClose" type="button" aria-label="关闭菜单"><svg class="icon"><use href="#i-x"/></svg></button>
   </div>

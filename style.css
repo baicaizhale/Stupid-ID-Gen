@@ -122,21 +122,54 @@ a { color: inherit; }
   align-items: center;
   gap: 12px;
   margin-left: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--text);
-  text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
 }
 
-.brand__logo {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  background: linear-gradient(140deg, #5b95f8 0%, #0b57d0 55%, #0842a0 100%);
-  color: #eef4ff;
+/* 线条小丑：透明底、白线（浅色主题自动换成深色墨色，否则看不见） */
+
+.clown {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.logo-mark { width: 21px; height: 21px; }
+html[data-theme="light"] .clown { color: #1f1f1f; }
+
+.clown-eyes circle { fill: currentColor; stroke: none; }
+
+.clown-arm {
+  transform-box: view-box;
+  transform-origin: 12.5px 55px;
+  transform: rotate(48deg);
+  transition: transform .38s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.clown.is-pinching .clown-arm { transform: rotate(0deg); }
+
+.clown-fingers { opacity: 0; transition: opacity .12s ease .18s; }
+.clown.is-pinching .clown-fingers { opacity: 1; }
+
+.clown-nose { transform-box: fill-box; transform-origin: center; }
+.clown.is-squeezing .clown-nose { animation: clown-squeeze .55s ease-in-out; }
+
+@keyframes clown-squeeze {
+  0%, 56%, 100% { transform: scale(1); }
+  26% { transform: scale(.7, .76); }
+  80% { transform: scale(.78, .84); }
+}
+
+.brand .clown { transition: transform .18s ease; }
+.brand:hover .clown { transform: scale(1.07); }
 
 .brand__name { font-size: 21px; font-weight: 400; letter-spacing: .01em; }
 

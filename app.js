@@ -404,6 +404,21 @@ $('btnRoll').addEventListener('click', () => roll());
 $('btnResult').addEventListener('click', () => roll());
 $('btnCopy').addEventListener('click', () => copyCurrent());
 
+/* 点 logo：小丑伸手捏自己的鼻子 */
+const clown = $('clownLogo');
+let pinching = false;
+clown.addEventListener('click', () => {
+  if (pinching) return;
+  pinching = true;
+  clown.classList.add('is-pinching');
+  window.setTimeout(() => clown.classList.add('is-squeezing'), 340);
+  window.setTimeout(() => clown.classList.remove('is-squeezing'), 980);
+  window.setTimeout(() => {
+    clown.classList.remove('is-pinching');
+    pinching = false;
+  }, 1250);
+});
+
 $('btnClearHistory').addEventListener('click', () => {
   state.history = [];
   saveJSON(HISTORY_KEY, state.history);
